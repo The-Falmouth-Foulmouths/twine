@@ -109,61 +109,33 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   max-width: 100%
 }
 
+/* make passages show their background-image with Ken Burns effect */
 .passage {
-  width: 100%;
-  height: 50vw;
-  margin: 0 auto;
-  overflow: hidden;
   position: relative;
-}
-
-.passage img {
   width: 100%;
-  animation: move 40s ease;
-  /* Add infinite to loop. */
-  
-  -ms-animation: move 40s ease;
-  -webkit-animation: move 40s ease;
-  -0-animation: move 40s ease;
-  -moz-animation: move 40s ease;
-  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  backface-visibility: hidden;
 }
 
-@-webkit-keyframes move {
-  0% {
-    -webkit-transform-origin: bottom left;
-    -moz-transform-origin: bottom left;
-    -ms-transform-origin: bottom left;
-    -o-transform-origin: bottom left;
-    transform-origin: bottom left;
-    transform: scale(1.0);
-    -ms-transform: scale(1.0);
-    /* IE 9 */
-    
-    -webkit-transform: scale(1.0);
-    /* Safari and Chrome */
-    
-    -o-transform: scale(1.0);
-    /* Opera */
-    
-    -moz-transform: scale(1.0);
-    /* Firefox */
-  }
-  100% {
-    transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    
-    -webkit-transform: scale(1.5);
-    /* Safari and Chrome */
-    
-    -o-transform: scale(1.5);
-    /* Opera */
-    
-    -moz-transform: scale(1.5);
-    /* Firefox */
-  }
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+.passage .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transform: translate3d(0,0,0) scale(1.5);
+  /* background set by each passage <<script>> */
+  background-size: cover;
+}
+
+.loaded .background {
+  transform: scale(1);
+  transition: 5s transform;
+}
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 // Load Audio
 // I use Javascript in favour of macros (e.g. the below equivalent to putting
@@ -177,22 +149,95 @@ SimpleAudio.tracks.add("birds", "./audio/birds.mp3", "./audio/birds.ogg");
 &lt;&lt;script&gt;&gt;
 // set background images on passages
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
-	//var elem = document.createElement(&quot;img&quot;);
-	//elem.src = &quot;https://source.unsplash.com/category/nature/1600x1400&quot;;
-	//document.getElementById(&quot;passage-genesis&quot;).appendChild(elem);
-	document.getElementById(&quot;passage-genesis&quot;).style.backgroundImage = &#39;url(https://source.unsplash.com/category/nature/1600x1400)&#39;;
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
 });
 &lt;&lt;/script&gt;&gt;
 
 Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
 A stick cracks underfoot a as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
 He [[waits a minute-&gt;Wait a minute]].
-He thinks nothing of it, and [[continues walking-&gt;Continue walking]].</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,350" size="100,100">Bram&#39;s ears prick up. Did someone hear me?
+He thinks nothing of it, and [[continues walking-&gt;Continue walking]].</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,350" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+Bram&#39;s ears prick up. Did someone hear me?
 He stands very still, and a bead of sweat runs down his forehead.
 Something shuffles behind the trees to the left of him. His eyes dart in [[that direction-&gt;Look at trees]].
-The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">The birds are completely quiet now. Bran traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
+The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+The birds are completely quiet now. Bran traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
 The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
-The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="6" name="Cross the bridge" tags="" position="650,500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="7" name="Look at trees" tags="" position="150,500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="8" name="Look at hill" tags="" position="300,500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="9" name="Start" tags="" position="400,50" size="100,100">Welcome.
+The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+The story continues here...</tw-passagedata><tw-passagedata pid="6" name="Cross the bridge" tags="" position="650,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+The story continues here...</tw-passagedata><tw-passagedata pid="7" name="Look at trees" tags="" position="150,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+The story continues here...</tw-passagedata><tw-passagedata pid="8" name="Look at hill" tags="" position="300,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+// set background images on passages
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  var backgroundSpan = document.createElement(&quot;span&quot;);
+  backgroundSpan.className += &#39; background&#39;;
+  backgroundSpan.style.backgroundImage = &#39;url(https://source.unsplash.com/category/&#39; + e.content.id + &#39;/1600x1400)&#39;;
+  e.content.appendChild(backgroundSpan);
+  e.content.classList.toggle(&#39;loaded&#39;);
+});
+&lt;&lt;/script&gt;&gt;
+
+The story continues here...</tw-passagedata><tw-passagedata pid="9" name="Start" tags="" position="400,50" size="100,100">Welcome.
 
 This is an audio-first university project inspired by Choose Your Own Adventure.
 
