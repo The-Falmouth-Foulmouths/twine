@@ -137,6 +137,8 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   transition: 15s transform;
 }
 
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 // Load Audio
@@ -146,52 +148,97 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 SimpleAudio.tracks.add("birds", "./audio/birds.mp3", "./audio/birds.ogg");
 
 
+// load 3-rd party JS
+setup.JSLoaded = false;
+var lockID = LoadScreen.lock();  // Lock loading screen
 
-</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+// importScripts("js/jquery.mobile-1.5.0-rc1.js")
+
+importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js")
+	.then(function() {
+		setup.JSLoaded = true;
+		// Reload current passage since imported scripts can function now.
+		Engine.play(passage(), true);
+		LoadScreen.unlock(lockID);  // Unlock loading screen
+	}).catch(function(error) {
+		alert(error);
+	}
+);</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
+A stick cracks underfoot a as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
+He [[waits a minute-&gt;Wait a minute]].
+He thinks nothing of it, and [[continues walking-&gt;Continue walking]].
+
+
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;Wait a minute&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;Continue walking&quot;);
+    });
+  }
 });
 &lt;&lt;/script&gt;&gt;
 
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,350" size="100,100">Bram&#39;s ears prick up. Did someone hear me?
+He stands very still, and a bead of sweat runs down his forehead.
+Something shuffles behind the trees to the left of him. His eyes dart in [[that direction-&gt;Look at trees]].
+The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].
 
-Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
-A stick cracks underfoot a as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
-He [[waits a minute-&gt;Wait a minute]].
-He thinks nothing of it, and [[continues walking-&gt;Continue walking]].</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,350" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;Look at trees&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;Look at hill&quot;);
+    });
+  }
 });
 &lt;&lt;/script&gt;&gt;
 
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1515071473508-2039fcaeb72d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
-  &gt;&lt;/span&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">The birds are completely quiet now. Bran traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
+The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
+The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].
 
-Bram&#39;s ears prick up. Did someone hear me?
-He stands very still, and a bead of sweat runs down his forehead.
-Something shuffles behind the trees to the left of him. His eyes dart in [[that direction-&gt;Look at trees]].
-The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;Go to hut&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;Cross the bridge&quot;);
+    });
+  }
 });
 &lt;&lt;/script&gt;&gt;
 
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1580689473635-4c8d43436e97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;
-
-The birds are completely quiet now. Bran traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
-The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
-The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -243,7 +290,24 @@ The story continues here...</tw-passagedata><tw-passagedata pid="9" name="Start"
 
 This is an audio-first university project inspired by Choose Your Own Adventure.
 
+Narrative branches are binary - two choices.
+Swipe left for the first choice.
+Swipe right for the second choice.
+
 [[Enjoy!-&gt;Genesis]]
+
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;Genesis&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;Genesis&quot;);
+    });
+  }
+});
+&lt;&lt;/script&gt;&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
