@@ -49,3 +49,12 @@ $(document).one(":passagedisplay", function (e) {
 ```
 
 Something about dynamically adding the SPAN tag didn't work.
+
+
+# Credits
+
+Snapping stick:
+https://freesound.org/people/shutup_outcast/sounds/367826/
+
+Birds taking off:
+https://freesound.org/people/Hope-Sounds/sounds/499679/

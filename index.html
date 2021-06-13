@@ -142,11 +142,22 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 // Load Audio
-// I use Javascript in favour of macros (e.g. the below equivalent to putting
+// The below is equivalent to putting
 // <<cacheaudio "birds" "./audio/birds.mp3" "./audio/birds.ogg">>
 // in the StoryInit passage.
+/*
 SimpleAudio.tracks.add("birds", "./audio/birds.mp3", "./audio/birds.ogg");
-
+var narration = [
+	"welcome",
+	"1_genesis",
+	"2_left",
+	"2_right",
+];
+for (var i=0; i<narration.length; i++) {
+	var it = narration[i];
+	SimpleAudio.tracks.add(it, `./audio/narration/${it}.mp3`, `./audio/narration/${it}.ogg`);
+}
+*/
 
 // load 3-rd party JS
 setup.JSLoaded = false;
@@ -164,12 +175,20 @@ importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.
 		alert(error);
 	}
 );</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
-A stick cracks underfoot a as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
+A stick cracks underfoot as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
 He [[waits a minute-&gt;Wait a minute]].
 He thinks nothing of it, and [[continues walking-&gt;Continue walking]].
 
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;1_genesis&quot; play&gt;&gt;
+&lt;&lt;timed 10s&gt;&gt;
+&lt;&lt;audio &quot;snapping_stick&quot; play&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 15s&gt;&gt;
+&lt;&lt;audio &quot;birds_taking_off&quot; play&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -195,6 +214,7 @@ Something shuffles behind the trees to the left of him. His eyes dart in [[that 
 The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;2_left&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -214,11 +234,13 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1515071473508-2039fcaeb72d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">The birds are completely quiet now. Bran traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
-The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">The birds are completely quiet now. Bram traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
 The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].
+The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
+
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;2_right&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -226,10 +248,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;Go to hut&quot;);
+      Engine.play(&quot;Cross the bridge&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;Cross the bridge&quot;);
+      Engine.play(&quot;Go to hut&quot;);
     });
   }
 });
@@ -238,7 +260,15 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1580689473635-4c8d43436e97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="4" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;birds&quot; &quot;./audio/birds.mp3&quot; &quot;./audio/birds.ogg&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;snapping_stick&quot; &quot;./audio/snapping_stick.mp3&quot; &quot;./audio/snapping_stick.ogg&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;birds_taking_off&quot; &quot;./audio/birds_taking_off.mp3&quot; &quot;./audio/birds_taking_off.ogg&quot;&gt;&gt;
+
+&lt;&lt;cacheaudio &quot;welcome&quot; &quot;./audio/narration/welcome.mp3&quot; &quot;./audio/narration/welcome.ogg&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;1_genesis&quot; &quot;./audio/narration/1_genesis.mp3&quot; &quot;./audio/narration/1_genesis.ogg&quot;&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt;
+&lt;&lt;cacheaudio &quot;2_left&quot; &quot;./audio/narration/2_left.mp3&quot; &quot;./audio/narration/2_left.ogg&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;2_right&quot; &quot;./audio/narration/2_right.mp3&quot; &quot;./audio/narration/2_right.ogg&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
