@@ -171,7 +171,31 @@ importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.
 		// Reload current passage since imported scripts can function now.
 		Engine.play(passage(), true);
 		LoadScreen.unlock(lockID);  // Unlock loading screen
-	}).catch(function(error) {
+	})
+	.then(function() {
+	  // set up doubletap event
+	  // https://gist.github.com/asgeo1/1652946 (didn't work)
+	  // https://forum.jquery.com/topic/doubletap-event
+		(function ($) {
+				$.fn.doubleTap = function (doubleTapCallback) {
+						return this.each(function () {
+								var elm = this;
+								var lastTap = 0;
+								$(elm).bind('vmousedown', function (e) {
+										var now = (new Date()).valueOf();
+										var diff = (now - lastTap);
+										lastTap = now;
+										if (diff < 250) {
+												if ($.isFunction(doubleTapCallback)) {
+														doubleTapCallback.call(elm);
+												}
+										}
+								});
+						});
+				}
+		})(jQuery);
+  })
+	.catch(function(error) {
 		alert(error);
 	}
 );</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
@@ -201,6 +225,9 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;Continue walking&quot;);
     });
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
   }
 });
 &lt;&lt;/script&gt;&gt;
@@ -226,6 +253,9 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;Look at hill&quot;);
+    });
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
     });
   }
 });
@@ -253,6 +283,9 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;Go to hut&quot;);
     });
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
   }
 });
 &lt;&lt;/script&gt;&gt;
@@ -273,6 +306,19 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
 });
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;branch left&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;branch right
+    });*/
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+  }
+});
 &lt;&lt;/script&gt;&gt;
 
 &lt;span
@@ -284,6 +330,19 @@ The story continues here...</tw-passagedata><tw-passagedata pid="6" name="Cross 
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;branch left&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;branch right
+    });*/
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+  }
 });
 &lt;&lt;/script&gt;&gt;
 
@@ -297,6 +356,19 @@ The story continues here...</tw-passagedata><tw-passagedata pid="7" name="Look a
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
 });
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;branch left&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;branch right
+    });*/
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+  }
+});
 &lt;&lt;/script&gt;&gt;
 
 &lt;span
@@ -308,6 +380,19 @@ The story continues here...</tw-passagedata><tw-passagedata pid="8" name="Look a
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;branch left&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;branch right
+    });*/
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+  }
 });
 &lt;&lt;/script&gt;&gt;
 
@@ -323,6 +408,7 @@ This is an audio-first university project inspired by Choose Your Own Adventure.
 Narrative branches are binary - two choices.
 Swipe left for the first choice.
 Swipe right for the second choice.
+Tap-and-hold to restart the game at any time.
 
 [[Enjoy!-&gt;Genesis]]
 
@@ -335,6 +421,13 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;Genesis&quot;);
     });
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+	$(event.content).on(&quot;dblclick&quot;, function (event) {
+       console.log(&quot;double tap!&quot;);
+    });
+	
   }
 });
 &lt;&lt;/script&gt;&gt;
