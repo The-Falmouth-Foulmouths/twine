@@ -1,0 +1,27 @@
+curl 'https://dnecdiq809.execute-api.us-east-1.amazonaws.com/prod201102/swa/speak?display_name=Charlotte&speed=0' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0' \
+  -H 'Accept: audio/mpeg' \
+  -H 'Accept-Language: en-GB,en;q=0.5' --compressed \
+  -H 'Content-Type: application/json' \
+  -H 'Referer: https://www.naturalreaders.com/' \
+  -H 'Origin: https://www.naturalreaders.com' \
+  -H 'Authorization: eyJraWQiOiJKbUo4RmpWa1J5dUo3NnFBZ0RrdFk5UVNlckJLdVBXeG1ISGtLZmRYZXhZPSIsImFsZyI6IlJTMjU2In0.eyJhdF9oYXNoIjoibVYxUWJBcWo1WENHaER1SjR2Y05SZyIsInN1YiI6ImNiNzRlMmRkLTFkYWUtNDc3OC04NDllLWQwYzhiZDQyZmUzYiIsImNvZ25pdG86Z3JvdXBzIjpbInVzLWVhc3QtMV9jSXNrakdvSmdfR29vZ2xlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9jSXNrakdvSmciLCJjb2duaXRvOnVzZXJuYW1lIjoiR29vZ2xlXzExNTY4OTM2MDE1Nzk1MTgxNDgwMiIsIm5vbmNlIjoielpwamJZSjk3VlNnYXNGWEVLUjFMTS1FR3laTlBUVkZBRmNLejBvWFg5ajFGMTI1TkVCWEpiR0xPc013M0Rnc3NJLXhVSzRHOXBSZ3RxSHJnZzVwVkJkUjU5QTV2ZDI5SldzM3FaM2M0d2txc3EzX29HNzJ0OHpoZ3N1NGFDWEpzVGZIc094Z2hvcXlBaE9PNjRyTHJ0bVJsalZzdGNBRTV3eGtDQ212UENnIiwiYXVkIjoiMm8ybHRjcTh0bm1lMmZpZGszNWZyazJrdDQiLCJpZGVudGl0aWVzIjpbeyJ1c2VySWQiOiIxMTU2ODkzNjAxNTc5NTE4MTQ4MDIiLCJwcm92aWRlck5hbWUiOiJHb29nbGUiLCJwcm92aWRlclR5cGUiOiJHb29nbGUiLCJpc3N1ZXIiOm51bGwsInByaW1hcnkiOiJ0cnVlIiwiZGF0ZUNyZWF0ZWQiOiIxNjI0MzkxNTQxMjIxIn1dLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTYyNDM5MTU0Miwibmlja25hbWUiOiJKdWFuIFV5cyIsImV4cCI6MTYyNDM5NTE0MiwiaWF0IjoxNjI0MzkxNTQyLCJlbWFpbCI6Im9weWF0ZUBnbWFpbC5jb20ifQ.PPcgi-V8CYO-OsbajmonWxYb_H3dUD2AOQkarUyOwrsmO9GUV06KE4xwmeraGZ2kGBM_GEENDJv-tazvHA3-hMABT1HgiS6ivP9PkviIBmk1QxPr3QRHhCrgg7VG4E_lEyTiNVJVSrVHgN_fPNbWcOvzjC9YSGmW8FZ-AEG6opEAApdbotKTGxe9IxRXOfMuHEaRQZvgBRCU5nRJPfGthJI9YOPW3FFzoA1lrIWrJze6waSRPn3HNh9_mHvbmydwJVMW00QFGtd5buYi3lQ5W9EmaVRN5NpibFKKiyxoOHfw7bEUkfJQwht230ok8BNRGiI_uBMboxcTGvTnNvm0UQ' \
+  -H 'Connection: keep-alive' \
+  --data-raw $'{"text":"Bram's ears prick up. Did someone hear me? He stands very still, and a bead of sweat runs down his forehead. Something shuffles behind the trees to the left of him. His eyes dart in that direction. The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in that direction."}' \
+  > passage.mp3
+
+curl 'https://dnecdiq809.execute-api.us-east-1.amazonaws.com/prod201102/swa/speak?display_name=Charlotte&speed=0' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0' \
+  -H 'Accept: audio/mpeg' \
+  -H 'Accept-Language: en-GB,en;q=0.5' --compressed \
+  -H 'Content-Type: application/json' \
+  -H 'Referer: https://www.naturalreaders.com/' \
+  -H 'Origin: https://www.naturalreaders.com' \
+  -H 'Authorization: eyJraWQiOiJKbUo4RmpWa1J5dUo3NnFBZ0RrdFk5UVNlckJLdVBXeG1ISGtLZmRYZXhZPSIsImFsZyI6IlJTMjU2In0.eyJhdF9oYXNoIjoibVYxUWJBcWo1WENHaER1SjR2Y05SZyIsInN1YiI6ImNiNzRlMmRkLTFkYWUtNDc3OC04NDllLWQwYzhiZDQyZmUzYiIsImNvZ25pdG86Z3JvdXBzIjpbInVzLWVhc3QtMV9jSXNrakdvSmdfR29vZ2xlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9jSXNrakdvSmciLCJjb2duaXRvOnVzZXJuYW1lIjoiR29vZ2xlXzExNTY4OTM2MDE1Nzk1MTgxNDgwMiIsIm5vbmNlIjoielpwamJZSjk3VlNnYXNGWEVLUjFMTS1FR3laTlBUVkZBRmNLejBvWFg5ajFGMTI1TkVCWEpiR0xPc013M0Rnc3NJLXhVSzRHOXBSZ3RxSHJnZzVwVkJkUjU5QTV2ZDI5SldzM3FaM2M0d2txc3EzX29HNzJ0OHpoZ3N1NGFDWEpzVGZIc094Z2hvcXlBaE9PNjRyTHJ0bVJsalZzdGNBRTV3eGtDQ212UENnIiwiYXVkIjoiMm8ybHRjcTh0bm1lMmZpZGszNWZyazJrdDQiLCJpZGVudGl0aWVzIjpbeyJ1c2VySWQiOiIxMTU2ODkzNjAxNTc5NTE4MTQ4MDIiLCJwcm92aWRlck5hbWUiOiJHb29nbGUiLCJwcm92aWRlclR5cGUiOiJHb29nbGUiLCJpc3N1ZXIiOm51bGwsInByaW1hcnkiOiJ0cnVlIiwiZGF0ZUNyZWF0ZWQiOiIxNjI0MzkxNTQxMjIxIn1dLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTYyNDM5MTU0Miwibmlja25hbWUiOiJKdWFuIFV5cyIsImV4cCI6MTYyNDM5NTE0MiwiaWF0IjoxNjI0MzkxNTQyLCJlbWFpbCI6Im9weWF0ZUBnbWFpbC5jb20ifQ.PPcgi-V8CYO-OsbajmonWxYb_H3dUD2AOQkarUyOwrsmO9GUV06KE4xwmeraGZ2kGBM_GEENDJv-tazvHA3-hMABT1HgiS6ivP9PkviIBmk1QxPr3QRHhCrgg7VG4E_lEyTiNVJVSrVHgN_fPNbWcOvzjC9YSGmW8FZ-AEG6opEAApdbotKTGxe9IxRXOfMuHEaRQZvgBRCU5nRJPfGthJI9YOPW3FFzoA1lrIWrJze6waSRPn3HNh9_mHvbmydwJVMW00QFGtd5buYi3lQ5W9EmaVRN5NpibFKKiyxoOHfw7bEUkfJQwht230ok8BNRGiI_uBMboxcTGvTnNvm0UQ' \
+  -H 'Connection: keep-alive' \
+  --data-raw $'{"text":"Bram\'s ears prick up. Did someone hear me? He stands very still, and a bead of sweat runs down his forehead. Something shuffles behind the trees to the left of him. His eyes dart in that direction. The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in that direction."}' \
+  > passage2.mp3
+
+Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening. A stick cracks underfoot as he steps forward. A flock of birds take off, and he pauses, hoping he didn\'t draw attention to himself. He waits a minute. He thinks nothing of it, and continues walking.
+
+Bram's ears prick up. Did someone hear me? He stands very still, and a bead of sweat runs down his forehead. Something shuffles behind the trees to the left of him. His eyes dart in that direction. The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in that direction.
