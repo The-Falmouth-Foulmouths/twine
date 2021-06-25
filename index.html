@@ -148,7 +148,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 
 
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.passages.nobr = true;
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Config.passages.nobr = true;
 
 // Load Audio
 // The below is equivalent to putting
@@ -178,17 +178,30 @@ importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.
 	.then(function() {
 		setup.JSLoaded = true;
 		// Reload current passage since imported scripts can function now.
-		Engine.play(passage(), true);
+		// Engine.play(passage(), true);
+
 		LoadScreen.unlock(lockID);  // Unlock loading screen
 	})
 	.catch(function(error) {
 		alert(error);
 	}
-);</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;p&gt;Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.&lt;/p&gt;
-&lt;p&gt;A stick cracks underfoot as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.&lt;/p&gt;
-&lt;p&gt;He [[waits a minute-&gt;Wait a minute]].&lt;/p&gt;
-&lt;p&gt;He thinks nothing of it, and [[continues walking-&gt;Continue walking]].&lt;/p&gt;
+);
 
+// rewrite passage content so each line is wrapped with <p>.
+// Requires prose to be wrapped in <prose></prose>
+// to simplify processing.
+$(document).on(":passagestart", function (e) {
+	var prose = e.passage.text.substr(7, e.passage.text.indexOf("</prose>") - 7)
+	var paragraphs = prose.split('\n').filter(o => !!o)
+	var withPTags = paragraphs.map(p => `<p>${p}</p>`).join("")
+	
+ 	e.passage.element.innerText = withPTags + e.passage.text.substr(e.passage.text.indexOf("</prose>") + 8)
+});</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;prose&gt;
+Bramwell stands on the precipice, and looks out over the glade. The mist hangs low, and the birdsong is deafening.
+A stick cracks underfoot as he steps forward. A flock of birds take off, and he pauses, hoping he didn&#39;t draw attention to himself.
+He [[waits a minute-&gt;Wait a minute]].
+He thinks nothing of it, and [[continues walking-&gt;Continue walking]].
+&lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;audio &quot;1_genesis&quot; play&gt;&gt;
@@ -214,9 +227,6 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
     });
-	$(event.content).on(&quot;dblclick&quot;, function (event) {
-	   Engine.show();
-    });
   }
 });
 &lt;&lt;/script&gt;&gt;
@@ -224,10 +234,12 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,350" size="100,100">&lt;p&gt;Bram&#39;s ears prick up. Did someone hear me?&lt;/p&gt;
-&lt;p&gt;He stands very still, and a bead of sweat runs down his forehead.&lt;/p&gt;
-&lt;p&gt;Something shuffles behind the trees to the left of him. His eyes dart in [[that direction-&gt;Look at trees]].&lt;/p&gt;
-&lt;p&gt;The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].&lt;/p&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="2" name="Wait a minute" tags="" position="225,351" size="100,100">&lt;prose&gt;
+Bram&#39;s ears prick up. Did someone hear me?
+He stands very still, and a bead of sweat runs down his forehead.
+Something shuffles behind the trees to the left of him. His eyes dart in [[that direction-&gt;Look at trees]].
+The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in [[that direction-&gt;Look at hill]].
+&lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;audio &quot;2_left&quot; play&gt;&gt;
@@ -253,10 +265,11 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1515071473508-2039fcaeb72d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="575,350" size="100,100">&lt;p&gt;The birds are completely quiet now. Bram traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.&lt;/p&gt;
-&lt;p&gt;The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].&lt;/p&gt;
-&lt;p&gt;The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].&lt;/p&gt;
-
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="3" name="Continue walking" tags="" position="574,350" size="100,100">&lt;prose&gt;
+The birds are completely quiet now. Bram traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
+The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].
+The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
+&lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;audio &quot;2_right&quot; play&gt;&gt;
@@ -290,7 +303,11 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;&lt;cacheaudio &quot;1_genesis&quot; &quot;./audio/narration/1_genesis.mp3&quot; &quot;./audio/narration/1_genesis.ogg&quot;&gt;&gt;
 &lt;&lt;waitforaudio&gt;&gt;
 &lt;&lt;cacheaudio &quot;2_left&quot; &quot;./audio/narration/2_left.mp3&quot; &quot;./audio/narration/2_left.ogg&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;2_right&quot; &quot;./audio/narration/2_right.mp3&quot; &quot;./audio/narration/2_right.ogg&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;cacheaudio &quot;2_right&quot; &quot;./audio/narration/2_right.mp3&quot; &quot;./audio/narration/2_right.ogg&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Go to hut" tags="" position="500,501" size="100,100">&lt;prose&gt;
+The story continues here...
+&lt;/prose&gt;
+
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -314,8 +331,11 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1496239298983-ebf973a467dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
   &gt;&lt;/span&gt;
+</tw-passagedata><tw-passagedata pid="6" name="Cross the bridge" tags="" position="649,500" size="100,100">&lt;prose&gt;
+The story continues here...
+&lt;/prose&gt;
 
-&lt;p&gt;The story continues here...&lt;/p&gt;</tw-passagedata><tw-passagedata pid="6" name="Cross the bridge" tags="" position="650,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -339,8 +359,11 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1557937283-6756ebaed6b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
   &gt;&lt;/span&gt;
+</tw-passagedata><tw-passagedata pid="7" name="Look at trees" tags="" position="150,500" size="100,100">&lt;prose&gt;
+The story continues here...
+&lt;/prose&gt;
 
-&lt;p&gt;The story continues here...&lt;/p&gt;</tw-passagedata><tw-passagedata pid="7" name="Look at trees" tags="" position="150,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -365,7 +388,11 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   style=&quot;background-image: url(https://images.unsplash.com/photo-1589665209931-949d5fd007e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGJpcmRzJTIwZm9yZXN0fGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)&quot;
   &gt;&lt;/span&gt;
 
-&lt;p&gt;The story continues here...&lt;/p&gt;</tw-passagedata><tw-passagedata pid="8" name="Look at hill" tags="" position="300,500" size="100,100">&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+</tw-passagedata><tw-passagedata pid="8" name="Look at hill" tags="" position="300,500" size="100,100">&lt;prose&gt;
+The story continues here...
+&lt;/prose&gt;
+
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function (e) {
   e.content.classList.toggle(&#39;trigger-animation&#39;);
@@ -390,14 +417,16 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   style=&quot;background-image: url(https://images.unsplash.com/photo-1611350470853-5af897423eeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGJpcmRzJTIwZm9yZXN0fGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)&quot;
   &gt;&lt;/span&gt;
 
-&lt;p&gt;The story continues here...&lt;/p&gt;</tw-passagedata><tw-passagedata pid="9" name="Start" tags="" position="400,50" size="100,100">&lt;p&gt;Welcome.&lt;/p&gt;
+</tw-passagedata><tw-passagedata pid="9" name="Start" tags="" position="399,50" size="100,100">&lt;prose&gt;
+Welcome.
 
-&lt;p&gt;This is an audio-first university project inspired by Choose Your Own Adventure.&lt;/p&gt;
-&lt;p&gt;Narrative branches are binary - two choices.&lt;/p&gt;
-&lt;p&gt;Swipe left for the first choice.&lt;/p&gt;
-&lt;p&gt;Swipe right for the second choice.&lt;/p&gt;
-&lt;p&gt;Tap-and-hold to restart the game at any time.&lt;/p&gt;
-&lt;p&gt;[[Enjoy!-&gt;Genesis]]&lt;/p&gt;
+This is an audio-first university project inspired by Choose Your Own Adventure.
+Narrative branches are binary - two choices.
+Swipe left for the first choice.
+Swipe right for the second choice.
+Tap-and-hold to restart the game at any time.
+[[Enjoy!-&gt;Genesis]]
+&lt;/prose&gt;
 
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagerender&quot;, function (event) {
