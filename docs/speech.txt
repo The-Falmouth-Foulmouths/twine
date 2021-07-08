@@ -1,0 +1,15 @@
+# This is the curl command to get text-to-speech.
+# Get a new auth code from
+# https://www.naturalreaders.com/commercial/read
+
+curl 'https://dnecdiq809.execute-api.us-east-1.amazonaws.com/prod201102/swa/speak?display_name=Charlotte&speed=0' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0' \
+  -H 'Accept: audio/mpeg' \
+  -H 'Accept-Language: en-GB,en;q=0.5' --compressed \
+  -H 'Content-Type: application/json' \
+  -H 'Referer: https://www.naturalreaders.com/' \
+  -H 'Origin: https://www.naturalreaders.com' \
+  -H 'Authorization: <code here>' \
+  -H 'Connection: keep-alive' \
+  --data-raw $'{"text":"Bram\'s ears prick up. Did someone hear me? He stands very still, and a bead of sweat runs down his forehead. Something shuffles behind the trees to the left of him. His eyes dart in that direction. The sound of a tumbling stone comes from the hill to the right of him. His eyes dart in that direction."}' \
+  > passage2.mp3

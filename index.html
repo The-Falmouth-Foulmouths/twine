@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="IGD730" startnode="5" creator="Twine" creator-version="2.3.14" ifid="191B409B-EAE0-4CD3-83B3-088626ACD693" zoom="1" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* get rid of ui, and make everything 100% */
+	<tw-storydata name="IGD730" startnode="5" creator="Twine" creator-version="2.3.14" ifid="191B409B-EAE0-4CD3-83B3-088626ACD693" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* get rid of ui, and make everything 100% */
 #ui-bar {
   display: none;
 }
@@ -197,18 +197,37 @@ $(document).on(":passagestart", function (e) {
 	
  	e.passage.element.innerText = withPTags + e.passage.text.substr(e.passage.text.indexOf("</prose>") + 8)
 });</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;prose&gt;
-Bramwell stands on the porch, and looks out over the glade, then further down the valley to the village below.
-The mist hangs low, and the birdsong is deafening.
+It&#39;s solitary living, out here atop the hill. Your mother lived in this very cabin. And her father before her. Some way up your family tree an ancestor built the cabin, logs harvested from the forest it watches over.
 
-The backpack is strapped on, and he glances back over his shoulder - yes, the wood cabin&#39;s door is locked. It&#39;s time to set off.
+Generations come and go. Branches of your family tree inevitably fall. The cabin and title of forest keeper is inherited. 
 
-Bramwell makes his way down the wooden stairs, and steps onto the familiar gravel path, which will lead him straight down the hill to the village.
+As lonely as it may be, the forest is beautiful. Brimming with life. Wildlife calls and follicks in every clearing, and each season brings a new palette of plantlife to paint the landscape. The woods are an untouched microcosm; the only sign of mankind to be seen is the cheerful puff of hearth smoke from your own chimney. 
 
-However, Bram&#39;s walked all of fifty paces when he encounters a fork in the path. This is strange, he thinks. This path doesn&#39;t fork. Or, at least it isn&#39;t supposed to.
+It has been two weeks since you last ventured into town for supplies, and your cabbages won’t be ready for harvest until late in the season.
 
-He decides to [[turn left-&gt;L]].
+For all it’s beauty, the forest trail that connects your cabin to humanity isn’t to be taken lightly. And you’d hate to be the first keeper to meet their end in the belly of a bear. Not to mention the recent rumours.
 
-He decides to [[turn right-&gt;R]].
+Supposedly, there have been grim happenings in the shadowy underbrush. Tall tales, for sure, but you’re uneasy at the thought of venturing out. Or is it the thought of the townsfolk that churns your stomach? Who knows.
+
+You can’t hold out any longer. It’s time to take a walk in the woods.
+
+The sound of your cabin door clunking shut startles a drove of hares, the bolt for the treeline, but barely make it twenty paces before they resume their playful springing in the tall grass. You hoist the heavy chain over your door frame, lock it, and pocket your brass key.
+
+
+You give the chain a quick rattle. It’s not going anywhere. Good.
+
+Last time you forgot to lock up, a family of foxes found their way in and made your bed their home. Even with all the lavender you spread, everything still smells foxy. 
+
+You set off down the hill and along the forest trail. The sunlight peels away as you move deeper into the woods.
+
+A break in the tree line reveals the silhouette of the tired town. The distant echo of metallic pounding tells you Johan, the old smithy, is at work. To keep your mind clear of the unusual quiet of the forest, you make bets with yourself on what he could be making. A new axe head for Woodsman Freidrich, perhaps? 
+
+It’s to no avail. You can’t ignore your unease at the silence any longer. Something has changed about these trees. They feel feral.
+
+The trail ahead winds off to the left, and it’ll keep you in the woods for longer than you’d like. To the right, through the break from which you can see the town, the grass seems trodden. It could be a shortcut. 
+
+Do you [[trust the path you know-&gt;L]], or [[the one a stranger has laid for you-&gt;R]]?
+
 &lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
@@ -244,7 +263,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;birds&quot; &quot;./audio/birds.mp3&quot; &quot;./audio/birds.ogg&quot;&gt;&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="50,50" size="100,100">&lt;&lt;cacheaudio &quot;birds&quot; &quot;./audio/birds.mp3&quot; &quot;./audio/birds.ogg&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;snapping_stick&quot; &quot;./audio/snapping_stick.mp3&quot; &quot;./audio/snapping_stick.ogg&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;birds_taking_off&quot; &quot;./audio/birds_taking_off.mp3&quot; &quot;./audio/birds_taking_off.ogg&quot;&gt;&gt;
 
@@ -335,20 +354,33 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 });
 &lt;&lt;/script&gt;&gt;
 </tw-passagedata><tw-passagedata pid="6" name="L" tags="" position="225,325" size="100,100">&lt;prose&gt;
-After about 20 minutes of walking, the mist begins to clear. Bram notices an apple tree.
-Strange, he thinks. There&#39;s usually nothing but oak trees in this wood.
-He walks on. Another apple tree. Then two more.
-Bram&#39;s ears prick up, and he stops. It sounded like a branch snapping back after being pulled on. It&#39;s quiet now, and he takes a slow step forward.
-A flash of red in the distance. Now gone.
-He takes one more step forward.
-There! There it is again. Red.
-The red thing extends an arm upwards, and a branch bends down. Then snaps back up.
-Bram crouches down so as not to be seen. He inches forward, and squints his eyes, trying to make out this red figure amongst the trees.
-Ah, a child, wearing a red cloak. The manner suggest the child to be a girl.
-She is tip-toeing now, trying to reach an apple a bit further up.
+With all the grim rumours floating about, taking an unknown shortcut would be lunacy. For all you know, bandits could have moved into the area - you would certainly be easy pickings for them if you strayed from the path.
 
-Bram [[approaches the child-&gt;LL]].
-Bram [[ignores the child-&gt;LR]].
+You smile at your own astuteness. You know a trap when you see one.
+
+It’s not much further into the trail that you notice how dark the forest has become. The seasons have been good for growing, but you’ve never seen the canopy block so much sunlight. Had you known, you would have brought your lantern. 
+
+As thick as the canopy is, the underbrush is even more so. The trail has become a tightrope.
+
+You look to your feet to watch your footing, but you barely see past your knees. The gloom has paired with a heavy mist that rolls at your shins like a hungry snake. Your heart quickens. Have you missed a turning? Wandered from the path somewhere? None of this is familiar.
+
+Your fears are confirmed when you realise the trees that surround you aren’t familiar alders. They’re bearing fruit. Apples.
+
+Your feet move of their own accord. Survival instincts, alone, propel you further along the path. Branches whip and crack around you, swiping at your clothes and skin.
+
+Something hooks at your leg. A root– or hand– in the gloom and fog. You tumble forwards, head rocking towards an overhanging branch. You shut your eyes and brace for a dizzying impact.
+
+It doesn’t come.
+
+Your body sprawls out onto grass. Light pours onto your face, momentarily blinding you.
+
+When your eyes adjust, you scan your surroundings. An orchard. Behind you is a break in the trees, the path you were on seems to skirt the field. 
+
+Stood dead-ahead is a little girl in a red cloak. In one hand, a basket, and the other, a freshly picked apple. She stifles a laugh, and you feel the heat of embarrassment crawl up your neck and fill your cheeks. You scared yourself.
+
+She turns back to her business. Now might be the best time to slip away and forget this ever happened. Or, you could approach her and try to appear less foolish.
+
+Time to decide: [[Make an introduction-&gt;LL]], or [[make an escape-&gt;LR]]?
 
 &lt;/prose&gt;
 
@@ -407,7 +439,24 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1580689473635-4c8d43436e97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
   &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="8" name="LL" tags="" position="125,450" size="100,100">&lt;prose&gt;
-The story continues here...
+You get to your feet and pat yourself down. You do more to smear the mud on your clothes than clear it. You make a bumbling introduction to the girl. She pays you little attention, but introduces herself as ‘Little Red’.
+
+You ask if she knows how to get back to the trail into town.
+
+“It’s back the way you came. Back up that path you ran down before you, uh, tripped.” She holds onto another chuckle, turning it into a throat-clearing cough. 
+
+“You should be more careful, really. Wolves tend to come into this clearing. Dread to think what would have happened if you’d sprained your ankle with no one here to help.”
+
+You’re taken aback by her fleeting mention of wolves. Should a young girl really be out picking apples where she knows wolves roam?
+
+“They aren’t so bad. So long as you don’t let them trick you. Now, I’ve got to get this basket back to grandma. We’re baking pies. It was nice meeting you”
+
+She takes a few skips towards a gate at the end of the field, and turns on her heels.
+
+“Oh, did you want one?” She holds a glistening red apple at arms length.
+
+Do you [[take the apple-&gt;LLL]], or [[politely decline-&gt;LLR]]? 
+
 &lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
@@ -417,12 +466,12 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 });
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
-    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
       Engine.play(&quot;LLL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;LLR&quot;);
-    });*/
+    });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
     });
@@ -436,7 +485,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   &gt;&lt;/span&gt;
 
 </tw-passagedata><tw-passagedata pid="9" name="LR" tags="" position="325,450" size="100,100">&lt;prose&gt;
-The story continues here...
+To be continued...
 &lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
@@ -446,12 +495,41 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 });
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
-    /*event.content).on(&quot;swipeleft&quot;, function (event) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
       Engine.play(&quot;LRL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
       Engine.play(&quot;LRR&quot;);
-    });*/
+    });
+	$(event.content).on(&quot;taphold&quot;, function (event) {
+       Engine.restart();
+    });
+  }
+});
+&lt;&lt;/script&gt;&gt;
+
+&lt;span
+  class=&quot;background&quot;
+  style=&quot;background-image: url(https://images.unsplash.com/photo-1611350470853-5af897423eeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGJpcmRzJTIwZm9yZXN0fGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)&quot;
+  &gt;&lt;/span&gt;
+
+</tw-passagedata><tw-passagedata pid="10" name="LLL" tags="" position="50,600" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="LLR" tags="" position="200,600" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name="passage-template" tags="" position="50,175" size="100,100">&lt;prose&gt;
+Copy/paste all of this, then add your prose here.
+&lt;/prose&gt;
+
+&lt;&lt;audio &quot;birds&quot; play&gt;&gt;
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagedisplay&quot;, function (e) {
+  e.content.classList.toggle(&#39;trigger-animation&#39;);
+});
+$(document).one(&quot;:passagerender&quot;, function (event) {
+  if (setup.JSLoaded) {
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+      Engine.play(&quot;LRL&quot;);
+    });
+    $(event.content).on(&quot;swiperight&quot;, function (event) {
+      Engine.play(&quot;LRR&quot;);
+    });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
     });
