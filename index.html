@@ -98,7 +98,19 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="IGD730" startnode="5" creator="Twine" creator-version="2.3.14" ifid="191B409B-EAE0-4CD3-83B3-088626ACD693" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* get rid of ui, and make everything 100% */
+	<tw-storydata name="IGD730" startnode="5" creator="Twine" creator-version="2.3.14" ifid="191B409B-EAE0-4CD3-83B3-088626ACD693" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* disable text selection
+https://stackoverflow.com/a/16805743/51280
+*/
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* get rid of ui, and make everything 100% */
 #ui-bar {
   display: none;
 }
@@ -178,8 +190,17 @@ importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.
 	.then(function() {
 		setup.JSLoaded = true;
 		// Reload current passage since imported scripts can function now.
-		// Engine.play(passage(), true);
+		Engine.play(passage(), true);
+	
+		// load this here instead of at the end
+		// otherwise we get weird rendering artefacts.
+		$(document).on(":passagestart", function (e) {
+			var prose = e.passage.text.substr(7, e.passage.text.indexOf("</prose>") - 7)
+			var paragraphs = prose.split('\n').filter(o => !!o)
+			var withPTags = paragraphs.map(p => `<p>${p}</p>`).join("")
 
+			e.passage.element.innerText = withPTags + e.passage.text.substr(e.passage.text.indexOf("</prose>") + 8)
+		});
 		LoadScreen.unlock(lockID);  // Unlock loading screen
 	})
 	.catch(function(error) {
@@ -190,13 +211,15 @@ importScripts("https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.
 // rewrite passage content so each line is wrapped with <p>.
 // Requires prose to be wrapped in <prose></prose>
 // to simplify processing.
+/*
 $(document).on(":passagestart", function (e) {
 	var prose = e.passage.text.substr(7, e.passage.text.indexOf("</prose>") - 7)
 	var paragraphs = prose.split('\n').filter(o => !!o)
 	var withPTags = paragraphs.map(p => `<p>${p}</p>`).join("")
 	
  	e.passage.element.innerText = withPTags + e.passage.text.substr(e.passage.text.indexOf("</prose>") + 8)
-});</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;prose&gt;
+});
+*/</script><tw-passagedata pid="1" name="Genesis" tags="" position="400,200" size="100,100">&lt;prose&gt;
 It&#39;s solitary living, out here atop the hill. Your mother lived in this very cabin. And her father before her. Some way up your family tree an ancestor built the cabin, logs harvested from the forest it watches over.
 
 Generations come and go. Branches of your family tree inevitably fall. The cabin and title of forest keeper is inherited. 
@@ -248,9 +271,11 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;L&quot;);
       Engine.play(&quot;L&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;R&quot;);
       Engine.play(&quot;R&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
@@ -282,12 +307,14 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 });
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
-    /*event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;branch left&quot;);
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;RLL&quot;);
+      Engine.play(&quot;RLL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;branch right
-    });*/
+	  console.log(&quot;swipe&quot;, &quot;RLR&quot;);
+      Engine.play(&quot;RLR&quot;);
+    });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
     });
@@ -310,12 +337,14 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 });
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
-    /*event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;branch left&quot;);
+    $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;RRL&quot;);
+      Engine.play(&quot;RRL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;branch right
-    });*/
+	  console.log(&quot;swipe&quot;, &quot;RRR&quot;);
+      Engine.play(&quot;RRR&quot;);
+    });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
     });
@@ -327,7 +356,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1557937283-6756ebaed6b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
   &gt;&lt;/span&gt;
-</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="399,50" size="100,100">&lt;prose&gt;
+</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="400,50" size="100,100">&lt;prose&gt;
 Welcome.
 
 This is an audio-first university project inspired by Choose Your Own Adventure.
@@ -342,9 +371,11 @@ Tap-and-hold to restart the game at any time.
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipeleft&quot;, &quot;Genesis&quot;);
       Engine.play(&quot;Genesis&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swiperight&quot;, &quot;Genesis&quot;);
       Engine.play(&quot;Genesis&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
@@ -393,9 +424,11 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LL&quot;);
       Engine.play(&quot;LL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LR&quot;);
       Engine.play(&quot;LR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
@@ -423,9 +456,11 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;RL&quot;);
       Engine.play(&quot;RL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;RR&quot;);
       Engine.play(&quot;RR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
@@ -467,9 +502,11 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LLL&quot;);
       Engine.play(&quot;LLL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LLR&quot;);
       Engine.play(&quot;LLR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
@@ -496,9 +533,11 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LRL&quot;);
       Engine.play(&quot;LRL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
+	  console.log(&quot;swipe&quot;, &quot;LRR&quot;);
       Engine.play(&quot;LRR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
