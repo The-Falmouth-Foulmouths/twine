@@ -206,9 +206,9 @@ Bramwell makes his way down the wooden stairs, and steps onto the familiar grave
 
 However, Bram&#39;s walked all of fifty paces when he encounters a fork in the path. This is strange, he thinks. This path doesn&#39;t fork. Or, at least it isn&#39;t supposed to.
 
-He decides to [[turn left-&gt;Genesis Turn Left]].
+He decides to [[turn left-&gt;L]].
 
-He decides to [[turn right-&gt;Genesis Turn Right]].
+He decides to [[turn right-&gt;R]].
 &lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
@@ -229,10 +229,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;Genesis Turn Left&quot;);
+      Engine.play(&quot;L&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;Genesis Turn Right&quot;);
+      Engine.play(&quot;R&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
@@ -252,7 +252,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;&lt;cacheaudio &quot;1_genesis&quot; &quot;./audio/narration/1_genesis.mp3&quot; &quot;./audio/narration/1_genesis.ogg&quot;&gt;&gt;
 &lt;&lt;waitforaudio&gt;&gt;
 &lt;&lt;cacheaudio &quot;2_left&quot; &quot;./audio/narration/2_left.mp3&quot; &quot;./audio/narration/2_left.ogg&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;2_right&quot; &quot;./audio/narration/2_right.mp3&quot; &quot;./audio/narration/2_right.ogg&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Go to hut" tags="" position="500,501" size="100,100">&lt;prose&gt;
+&lt;&lt;cacheaudio &quot;2_right&quot; &quot;./audio/narration/2_right.mp3&quot; &quot;./audio/narration/2_right.ogg&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="RL" tags="" position="475,450" size="100,100">&lt;prose&gt;
 The story continues here...
 &lt;/prose&gt;
 
@@ -280,7 +280,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1496239298983-ebf973a467dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
   &gt;&lt;/span&gt;
-</tw-passagedata><tw-passagedata pid="4" name="Cross the bridge" tags="" position="649,500" size="100,100">&lt;prose&gt;
+</tw-passagedata><tw-passagedata pid="4" name="RR" tags="" position="675,450" size="100,100">&lt;prose&gt;
 The story continues here...
 &lt;/prose&gt;
 
@@ -334,7 +334,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   }
 });
 &lt;&lt;/script&gt;&gt;
-</tw-passagedata><tw-passagedata pid="6" name="Genesis Turn Left" tags="" position="233,347" size="100,100">&lt;prose&gt;
+</tw-passagedata><tw-passagedata pid="6" name="L" tags="" position="225,325" size="100,100">&lt;prose&gt;
 After about 20 minutes of walking, the mist begins to clear. Bram notices an apple tree.
 Strange, he thinks. There&#39;s usually nothing but oak trees in this wood.
 He walks on. Another apple tree. Then two more.
@@ -347,8 +347,8 @@ Bram crouches down so as not to be seen. He inches forward, and squints his eyes
 Ah, a child, wearing a red cloak. The manner suggest the child to be a girl.
 She is tip-toeing now, trying to reach an apple a bit further up.
 
-Bram [[approaches the child-&gt;Approach Child]].
-Bram [[ignores the child-&gt;Ignore Child]].
+Bram [[approaches the child-&gt;LL]].
+Bram [[ignores the child-&gt;LR]].
 
 &lt;/prose&gt;
 
@@ -361,10 +361,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;Look at trees&quot;);
+      Engine.play(&quot;LL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;Look at hill&quot;);
+      Engine.play(&quot;LR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
@@ -376,10 +376,10 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1515071473508-2039fcaeb72d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1652&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="7" name="Genesis Turn Right" tags="" position="571,347" size="100,100">&lt;prose&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="7" name="R" tags="" position="575,325" size="100,100">&lt;prose&gt;
 The birds are completely quiet now. Bram traipses very lighly over the soft undergrowth, being careful not to step on any sticks again.
-The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;Cross the bridge]].
-The hut is to the right, he thinks. Perhaps I should [[go there-&gt;Go to hut]].
+The bridge is to the left, he thinks. Perhaps I should [[cross it-&gt;RL]].
+The hut is to the right, he thinks. Perhaps I should [[go there-&gt;RR]].
 &lt;/prose&gt;
 
 &lt;&lt;audio &quot;birds&quot; play&gt;&gt;
@@ -391,10 +391,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     $(event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;Cross the bridge&quot;);
+      Engine.play(&quot;RL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;Go to hut&quot;);
+      Engine.play(&quot;RR&quot;);
     });
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
@@ -406,7 +406,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
 &lt;span
   class=&quot;background&quot;
   style=&quot;background-image: url(https://images.unsplash.com/photo-1580689473635-4c8d43436e97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80)&quot;
-  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="8" name="Approach Child" tags="" position="117,505" size="100,100">&lt;prose&gt;
+  &gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="8" name="LL" tags="" position="125,450" size="100,100">&lt;prose&gt;
 The story continues here...
 &lt;/prose&gt;
 
@@ -418,10 +418,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     /*event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;branch left&quot;);
+      Engine.play(&quot;LLL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;branch right
+      Engine.play(&quot;LLR&quot;);
     });*/
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
@@ -435,7 +435,7 @@ $(document).one(&quot;:passagerender&quot;, function (event) {
   style=&quot;background-image: url(https://images.unsplash.com/photo-1589665209931-949d5fd007e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGJpcmRzJTIwZm9yZXN0fGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)&quot;
   &gt;&lt;/span&gt;
 
-</tw-passagedata><tw-passagedata pid="9" name="Ignore Child" tags="" position="348,499" size="100,100">&lt;prose&gt;
+</tw-passagedata><tw-passagedata pid="9" name="LR" tags="" position="325,450" size="100,100">&lt;prose&gt;
 The story continues here...
 &lt;/prose&gt;
 
@@ -447,10 +447,10 @@ $(document).one(&quot;:passagedisplay&quot;, function (e) {
 $(document).one(&quot;:passagerender&quot;, function (event) {
   if (setup.JSLoaded) {
     /*event.content).on(&quot;swipeleft&quot;, function (event) {
-      Engine.play(&quot;branch left&quot;);
+      Engine.play(&quot;LRL&quot;);
     });
     $(event.content).on(&quot;swiperight&quot;, function (event) {
-      Engine.play(&quot;branch right
+      Engine.play(&quot;LRR&quot;);
     });*/
 	$(event.content).on(&quot;taphold&quot;, function (event) {
        Engine.restart();
